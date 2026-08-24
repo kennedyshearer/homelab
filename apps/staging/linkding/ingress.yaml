@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: lds.kennedyhomelab.dev
+    - host: lds.kennedyhomelab.net
       http:
         paths:
           - backend:
