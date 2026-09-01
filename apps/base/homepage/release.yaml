@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: homepage
+  namespace: homepage
+spec:
+   interval: 30m 
+   chart:
+     spec:
+       chart: homepage
+       version: 2.1.0
+      
+       sourceRef:
+         kind: HelmRepository
+         name: homepage
+         namespace: homepage
+       interval: 12h
+
+   values:
+     image:
+       tag: v2.1.2
+     
+     env:
+       - name: HOMEPAGE_ALLOWED_HOSTS
+         value: homepage.kennedyhomelab.net
+
+     config:
+       services:
+         - Infrastructure:
+           - Grafana:
+               href: https://grafana.kennedyhomelab.net
+           - Unifi:
+               href: https://unifi.ui.com/
+
+         - Apps:
+           - Linkding:
+               href: https://ldplex.kennedyhomelab.net
+
+         - Create:
+           - LinkedIn:
+               href: https://linkedin.com/in/kennedyshearer
+           - X:
+               href: https://x.com/kennedyashearer
+           - Skool:
+               href: https://www.skool.com/
+
+         - Consume:
+           - YouTube:
+               href: https://youtube.com/ 
+           - Audiobookshelf:
+               href: https://abs.kennedyhomelab.net
+
+       settingsStrings: |
+         title: Homepage
+         headerStyle: boxed
+         layout:
+           Infrastructure:
+             style: column
+             columns: 1
+           Apps:
+             style: column
+             columns: 1
+           Create:
+             style: column
+             columns: 1
+           Consume:
+             style: column
+             columns: 1
