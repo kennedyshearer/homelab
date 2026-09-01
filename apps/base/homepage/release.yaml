@@ -4,12 +4,12 @@ metadata:
   name: homepage
   namespace: homepage
 spec:
-   interval: 30m 
+   interval: 30m
    chart:
      spec:
        chart: homepage
        version: 2.1.0
-      
+
        sourceRef:
          kind: HelmRepository
          name: homepage
@@ -19,10 +19,39 @@ spec:
    values:
      image:
        tag: v2.1.2
-     
+
      env:
        - name: HOMEPAGE_ALLOWED_HOSTS
          value: homepage.kennedyhomelab.net
+
+     podSecurityContext:
+       runAsNonRoot: true
+       fsGroup: 1000
+
+     securityContext:
+       runAsUser: 1000
+       runAsGroup: 1000
+       allowPrivilegeEscalation: false
+       capabilities:
+         drop:
+           - ALL
+
+     ingress:
+       main:
+         enabled: true
+
+         ingressClassName: traefik
+
+         hosts:
+           - host: homepage.kennedyhomelab.net
+             paths:
+               - path: /
+                 pathType: Prefix
+
+         tls:
+           - secretName: homepage-tls-secret
+             hosts:
+               - homepage.kennedyhomelab.net
 
      config:
        services:
@@ -46,7 +75,7 @@ spec:
 
          - Consume:
            - YouTube:
-               href: https://youtube.com/ 
+               href: https://youtube.com/
            - Audiobookshelf:
                href: https://abs.kennedyhomelab.net
 

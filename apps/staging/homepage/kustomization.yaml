@@ -5,4 +5,4 @@ resources:
   - ../../base/homepage/
   - cloudflare.yaml
   - cloudflare-secret.yaml
-  - ingress.yaml
+  - homepage-tls-secret.yaml
