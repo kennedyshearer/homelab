@@ -20,6 +20,9 @@ spec:
      image:
        tag: v2.1.2
 
+     podLabels:
+       app: homepage
+
      env:
        - name: HOMEPAGE_ALLOWED_HOSTS
          value: homepage.kennedyhomelab.net
