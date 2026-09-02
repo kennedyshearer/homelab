@@ -6,3 +6,4 @@ resources:
   - cloudflare.yaml
   - cloudflare-secret.yaml
   - homepage-tls-secret.yaml
+  - homepage-auth-secret.yaml

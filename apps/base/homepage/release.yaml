@@ -23,9 +23,10 @@ spec:
      podLabels:
        app: homepage
 
-     env:
-       - name: HOMEPAGE_ALLOWED_HOSTS
-         value: homepage.kennedyhomelab.net
+     env: []
+     envFrom:
+       - secretRef:
+           name: homepage-auth
 
      podSecurityContext:
        runAsNonRoot: true
