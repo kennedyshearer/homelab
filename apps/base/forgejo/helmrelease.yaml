@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  interval: 10m0s
+  chartRef:
+    kind: OCIRepository
+    name: forgejo
+    namespace: forgejo
+
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+
+  values:
+    gitea:
+      admin:
+        existingSecret: forgejo-admin-creds
+
+      config:
+        database:
+          DB_TYPE: postgres
+          HOST: forgejo-postgres:5432
+          NAME: forgejo
+          USER: forgejo
+        server:
+          DOMAIN: forgejo.kennedyhomelab.net
+          ROOT_URL: https://forgejo.kennedyhomelab.net
+
+      additionalConfigFromEnvs:
+        - name: FORGEJO__DATABASES__PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: forgejo-postgres-creds
+              key: password
+
+    persistence:
+      enabled: true
+      size: 20Gi
+      storageClass: longhorn
+    service:
+      http:
+        type: ClusterIP
