@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: forgejo-postgres
+  namespace: forgejo
+spec:
+  replicas: 1
+  serviceName: forgejo-postgres
+  selector:
+    matchLabels:
+      app: forgejo-postgres
+  template:
+    metadata:
+      labels:
+        app: forgejo-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:16
+        ports:
+          - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: forgejo-postgres-creds
+                key: username
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: forgejo-postgres-creds
+                key: password
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: forgejo-postgres-creds
+                key: database
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: data
+  volumeClaimTemplate:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: longhorn
+        resources:
+          requests:
+            storage: 5Gi
