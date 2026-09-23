@@ -33,7 +33,7 @@ spec:
           ROOT_URL: https://forgejo.kennedyhomelab.net
 
       additionalConfigFromEnvs:
-        - name: FORGEJO__DATABASES__PASSWD
+        - name: FORGEJO__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
               name: forgejo-postgres-creds
