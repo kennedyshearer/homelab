@@ -18,6 +18,14 @@ spec:
       retries: 3
 
   values:
+    podSecurityContext:
+      fsGroup: 1000
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+
     gitea:
       admin:
         existingSecret: forgejo-admin-creds
