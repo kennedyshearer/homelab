@@ -61,26 +61,37 @@ spec:
        services:
          - Infrastructure:
            - Grafana:
+               icon: grafana.png
                href: https://grafana.kennedyhomelab.net
            - Unifi:
+               icon: unifi.png
                href: https://unifi.ui.com/
 
          - Apps:
+           - Forgejo:
+               icon: forgejo.png
+               href: https://forgejo.kennedyhomelab.net
+
            - Linkding:
+               icon: linkding.png
                href: https://ldplex.kennedyhomelab.net
 
          - Create:
            - LinkedIn:
+               icon: linkedin.png
                href: https://linkedin.com/in/kennedyshearer
            - X:
+               icon: x.png
                href: https://x.com/kennedyashearer
            - Skool:
                href: https://www.skool.com/
 
          - Consume:
            - YouTube:
+               icon: youtube.png
                href: https://youtube.com/
            - Audiobookshelf:
+               icon: audiobookshelf.png
                href: https://abs.kennedyhomelab.net
 
        settingsStrings: |
