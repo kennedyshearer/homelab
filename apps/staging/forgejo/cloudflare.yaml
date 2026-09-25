@@ -79,7 +79,7 @@ data:
     ingress:
     - hostname: forgejo.kennedyhomelab.net
       service: http://forgejo-http:3000
-    - hostname: ssh.forgejo.kennedyhomelab.net
+    - hostname: forgejo-ssh.kennedyhomelab.net
       service: ssh://forgejo-ssh:22
 
     # This rule sends traffic to the built-in hello-world HTTP server. This can help debug connectivity
