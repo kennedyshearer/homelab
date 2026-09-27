@@ -1,6 +1,7 @@
 apiVersion: v1
 data:
-    RENOVATE_TOKEN: ENC[AES256_GCM,data:3lVfVuZnDAvpAKZSIu9nen8dhB9breo4P+VSAxKqBJokuwIVIhkZxw5qZmC5Fm9gllUaRqArlbg=,iv:zJpEzvVjQIbodllIov9w9NWVSMLhVZk0ABS7MO5z/p8=,tag:BdbgVxGc7N1caZ/oh3/MJA==,type:str]
+    RENOVATE_GITHUB_COM_TOKEN: ENC[AES256_GCM,data:Jep31iYLgmCP3q2X7UaWeIiYVJrds1AlxGGALAo//Gmb77orhkOsszt8R68gj1VIS3CQe4/hdFI=,iv:/4dnDWAOU5lm4IwgjcvEt6CKLUL/pe0yrbXdOXBtbk0=,tag:B3yqKcSnBJYkH1gjr7eERg==,type:str]
+    RENOVATE_TOKEN: ENC[AES256_GCM,data:NL0AwJ27FvodhyHYlp+kHEMJDncumjrue8fBnt/KX7Aim3FwBd42f5X5T2Abx5yQJzcmNp3sIDA=,iv:gmKVfw6ldReJInIrVML8iOeglKaS9pSl/qCYzIFhpjs=,tag:9Gj2ydO+9cXmjWb+kugj1w==,type:str]
 kind: Secret
 metadata:
     name: renovate-container-env
@@ -8,14 +9,14 @@ sops:
     age:
         - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrWW5nUk9XbDRFTVY4TFVs
-            YVNiQXdvQnJWYWt5a2c1VDZDcFNvWGFnSVZBCmo1Y2dKRkVyeldxb0pFNUI2YVNH
-            SWgxSWxVT0xWVUVzRVNpQjEwQkFycW8KLS0tIC94YW1JK3d6NzNvaVduUDlvNWRN
-            T1pHSER0L0FRckZvaVU1YTZXcWRneXcKcSaOh+kvMMKxudNKGiVfn2MbSxsdhxDO
-            zkx/8Jd2yfRofzQOhC87+VLaJOZ0Zg+VCU1zKyHLQXs+zWflxpa9MQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyV2owK3dqblNJTUd3SDIx
+            TG13YzlYNVRzZ09LWFoyM2RwRGRlUWh4S1FjCitRUm9LdnNrbEE3ZE1kTjE2b3M4
+            cERkWEtjQ1JYRmlIdnVra0JpK29ZY2sKLS0tIHkybkl5R0NMZVZEZFZ6aXgwQ1ln
+            S0krNXVFTHd2eFJ4VGwwcXN1TVVEczAK58nqWH5fT3tbYmLPx0S1qL88JQd0Iajf
+            ymWKLrR6H5koe1nxW/+MXKaxYqhk7Gy6neTDInWdpJugmN8Fl/eZ8Q==
             -----END AGE ENCRYPTED FILE-----
           recipient: age12r60ahuly9wzej7nrhlaxxqjtqexwl2uekrw9527zaa5svsmea9quadgkq
     encrypted_regex: ^(data|stringData)$
-    lastmodified: "2026-09-26T00:47:25Z"
-    mac: ENC[AES256_GCM,data:0x/lJH7ZFxuiWlegrUHoF0Qb8HDD2znuq7mhPoLNtnis06XD3eJj/JnFa6yObvWwlU4/CovYAsC05Vr8xJy5g5zc4zx/LEZaLF/FAOhf0Ri1sSWSYNd0y3bvvsyX8qu7EoxWuBVv2PQQSm1Vcv4bhqXwj96UhLdnnQnIsSbjDRo=,iv:LFXxYGmQ3O3IRUrlKmd7oSg63LSly/s1YN1Fn9EvOQs=,tag:q5DUkidKXc9m9GeugEta+g==,type:str]
+    lastmodified: "2026-09-27T03:20:16Z"
+    mac: ENC[AES256_GCM,data:NTm7VrSFuo3FUQLG+I9lQf94zl9XRz1ApuzuiJuwFEyvB6uEQEAeRTvzlpQ8ezCAulGHzNTik/3j36M/BcJIkCG+/TZYi26WTEwE2mKyRCprhGCN+4f6QAEMqj8hqSwVSyax035MXsMLgBXnbx+zFA52k7MfLrCq52MvqGRxQM0=,iv:9xEsYhNxq8jKt6URWdj+DBv3Tfrwi4363UrQwpLMSLA=,tag:K4H5m1zWYYb447PyeOueJA==,type:str]
     version: 3.13.3
