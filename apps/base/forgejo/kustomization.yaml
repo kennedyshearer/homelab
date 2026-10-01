@@ -4,7 +4,6 @@ resources:
   - namespace.yaml
   - admin-secret.yaml
   - postgres-secret.yaml
-  - postgres-service.yaml
-  - postgres-statefulset.yaml
+  - postgres-cluster.yaml
   - ocirepository.yaml
   - helmrelease.yaml
