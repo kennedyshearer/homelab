@@ -8,7 +8,7 @@ spec:
    chart:
      spec:
        chart: homepage
-       version: 2.1.0
+       version: "2.1.0"
 
        sourceRef:
          kind: HelmRepository
@@ -18,7 +18,7 @@ spec:
 
    values:
      image:
-       tag: v2.1.2
+       tag: "2.1.2"
 
      podLabels:
        app: homepage
@@ -84,6 +84,7 @@ spec:
                icon: x.png
                href: https://x.com/kennedyashearer
            - Skool:
+               icon: ourschool.png
                href: https://www.skool.com/
 
          - Consume:
