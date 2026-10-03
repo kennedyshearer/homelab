@@ -18,7 +18,7 @@ spec:
 
    values:
      image:
-       tag: "2.1.2"
+       tag: "v2.4.0"
 
      podLabels:
        app: homepage
@@ -84,7 +84,7 @@ spec:
                icon: x.png
                href: https://x.com/kennedyashearer
            - Skool:
-               icon: ourschool.png
+               icon: https://cdn.jsdelivr.net/gh/selfhst/icons/svg/ourschool-light.svg
                href: https://www.skool.com/
 
          - Consume:
