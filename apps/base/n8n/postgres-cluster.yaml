@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: n8n-postgres-cluster
+  namespace: n8n
+spec:
+  instances: 1
+
+  storage:
+    storageClass: longhorn
+    size: 5Gi
+
+  bootstrap:
+    initdb:
+      database: n8n
+      owner: n8n
+      secret:
+        name: n8n-postgres-creds
