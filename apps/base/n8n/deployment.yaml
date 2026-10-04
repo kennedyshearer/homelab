@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: n8n
+  name: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: n8n
+  template:
+    metadata:
+      labels:
+        app: n8n
+    spec:
+      restartPolicy: Always
+
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      containers:
+      - name: n8n
+        image: docker.n8n.io/n8nio/n8n:2.41.6
+
+        securityContext:
+          allowPrivilegeEscalation: false
+
+        env:
+          - name: DB_POSTGRESDB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: n8n-postgres-creds
+                key: password
+        envFrom:
+          - configMapRef:
+            name: n8n-configmap
+
+        ports:
+        - containerPort: 3008
+
+        volumeMounts:
+          - mountPath: /home/node/.n8n
+            name: n8n-data
+
+      volumes:
+        - name: n8n-data
+          persistentVolumeClaim:
+            claimName: n8n-data
