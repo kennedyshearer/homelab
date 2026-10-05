@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  namespace: pgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      restartPolicy: Always
+
+      securityContext:
+        runAsUser: 5050
+        runAsGroup: 5050
+        fsGroup: 5050
+
+      containers:
+        - name: pgadmin4
+          image: dpage/pgadmin4:9.18.0
+          ports:
+            - containerPort: 80
+
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: "admin@kennedyhomelab.net"
+            - name: PGADMIN_DEFAULT_PASSWORD
+               valueFrom:
+                 secretKeyRef:
+                   name: pgadmin-creds
+                   key: password
+            - name: PGADMIN_CONFIG_MAX_LOGIN_ATTEMPTS
+              value: "5"
+
+          volumeMounts:
+            - name: pgadmin-data
+              mountPath: /var/lib/pgadmin
+
+      volumes:
+        - name: pgadmin-data
+          persistentVolumeClaim:
+            claimName: pgadmin-data
