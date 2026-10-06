@@ -59,7 +59,10 @@ spec:
 
      config:
        services:
-         - Infrastructure:
+         - Homelab:
+           - pgAdmin:
+               icon: pgadmin.png
+               href: https://pgadmin.kennedyhomlab.net
            - Grafana:
                icon: grafana.png
                href: https://grafana.kennedyhomelab.net
