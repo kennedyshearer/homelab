@@ -30,10 +30,10 @@ spec:
             - name: PGADMIN_DEFAULT_EMAIL
               value: "admin@kennedyhomelab.net"
             - name: PGADMIN_DEFAULT_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: pgadmin-creds
-                    key: password
+              valueFrom:
+                secretKeyRef:
+                  name: pgadmin-creds
+                  key: password
             - name: PGADMIN_CONFIG_MAX_LOGIN_ATTEMPTS
               value: "5"
 
