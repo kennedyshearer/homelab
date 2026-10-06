@@ -4,7 +4,7 @@ metadata:
   name: forgejo-postgres-cluster
   namespace: forgejo
 spec:
-  instances: 1
+  instances: 2
 
   storage:
     storageClass: longhorn
