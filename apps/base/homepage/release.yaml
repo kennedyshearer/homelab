@@ -62,7 +62,7 @@ spec:
          - Homelab:
            - pgAdmin:
                icon: pgadmin.png
-               href: https://pgadmin.kennedyhomlab.net
+               href: https://pgadmin.kennedyhomelab.net
            - Grafana:
                icon: grafana.png
                href: https://grafana.kennedyhomelab.net
