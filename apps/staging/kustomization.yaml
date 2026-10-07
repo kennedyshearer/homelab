@@ -6,3 +6,4 @@ resources:
   - homepage
   - forgejo
   - pgadmin
+  - n8n
