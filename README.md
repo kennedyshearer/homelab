@@ -62,6 +62,8 @@ Some components live in their own namespaces rather than a shared `apps` namespa
 - **Forgejo**: self-hosted Git, deployed with a Flux OCIRepository and HelmRelease. Exposed via Cloudflare Tunnel so I can reach it away from home, with push-mirroring to GitHub
 - **Homepage**: dashboard for the lab, deployed with a Flux HelmRepository and HelmRelease
 - **Linkding**: self-hosted bookmark manager, exposed via Cloudflare Tunnel
+- **n8n**: workflow automation, backed by a CloudNativePG-managed Postgres database
+- **pgAdmin**: web UI for managing and inspecting the Postgres databases running in the cluster
 
 ### `infrastructure/`
 - **CloudNativePG**: operator that manages the PostgreSQL databases for apps
