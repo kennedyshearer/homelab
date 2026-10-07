@@ -66,18 +66,12 @@ spec:
            - Grafana:
                icon: grafana.png
                href: https://grafana.kennedyhomelab.net
-           - Unifi:
-               icon: unifi.png
-               href: https://unifi.ui.com/
-
-         - Apps:
            - Forgejo:
                icon: forgejo.png
                href: https://forgejo.kennedyhomelab.net
-
-           - Linkding:
-               icon: linkding.png
-               href: https://ldplex.kennedyhomelab.net
+           - Unifi:
+               icon: unifi.png
+               href: https://unifi.ui.com/
 
          - Create:
            - LinkedIn:
@@ -97,6 +91,20 @@ spec:
            - Audiobookshelf:
                icon: audiobookshelf.png
                href: https://abs.kennedyhomelab.net
+
+         - Misc:
+           - Linkding:
+               icon: linkding.png
+               href: https://ldplex.kennedyhomelab.net
+           - n8n:
+               icon: n8n.png
+               href: https://n8n.kennedyhomelab.net
+
+       bookmarks:
+         - Portfolio:
+             - Github:
+                 - abbr: GH
+                   href: https://github.com/kennedyshearer
 
        settingsStrings: |
          title: Homepage
