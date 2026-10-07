@@ -22,28 +22,28 @@ spec:
         fsGroup: 1000
 
       containers:
-      - name: n8n
-        image: docker.n8n.io/n8nio/n8n:2.41.6
+        - name: n8n
+          image: docker.n8n.io/n8nio/n8n:2.41.6
 
-        securityContext:
-          allowPrivilegeEscalation: false
+          securityContext:
+            allowPrivilegeEscalation: false
 
-        env:
-          - name: DB_POSTGRESDB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: n8n-postgres-creds
-                key: password
-        envFrom:
-          - configMapRef:
-            name: n8n-configmap
+          env:
+            - name: DB_POSTGRESDB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: n8n-postgres-creds
+                  key: password
+          envFrom:
+            - configMapRef:
+                name: n8n-configmap
 
-        ports:
-        - containerPort: 3008
+          ports:
+            - containerPort: 3008
 
-        volumeMounts:
-          - mountPath: /home/node/.n8n
-            name: n8n-data
+          volumeMounts:
+            - mountPath: /home/node/.n8n
+              name: n8n-data
 
       volumes:
         - name: n8n-data
