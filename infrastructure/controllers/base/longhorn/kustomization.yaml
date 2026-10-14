@@ -5,4 +5,4 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - middleware.yaml
-  - longhorn-auth-secret
+  - longhorn-auth-secret.yaml
