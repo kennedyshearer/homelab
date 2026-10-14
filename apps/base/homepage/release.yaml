@@ -63,6 +63,9 @@ spec:
            - pgAdmin:
                icon: pgadmin.png
                href: https://pgadmin.kennedyhomelab.net
+           - Longhorn:
+               icon: longhorn.png
+               href: https://longhorn.kennedyhomelab.net
            - Grafana:
                icon: grafana.png
                href: https://grafana.kennedyhomelab.net
