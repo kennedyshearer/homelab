@@ -4,3 +4,4 @@ resources:
   - renovate
   - longhorn
   - cloudnative-pg
+  - cert-manager
