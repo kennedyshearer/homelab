@@ -7,6 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   volumeMode: Filesystem
   resources:
     requests:
@@ -21,6 +22,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   volumeMode: Filesystem
   resources:
     requests:
@@ -35,6 +37,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   volumeMode: Filesystem
   resources:
     requests:
