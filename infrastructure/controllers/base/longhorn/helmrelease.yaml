@@ -16,6 +16,11 @@ spec:
     defaultSettings:
       defaultReplicaCount: 3
 
+    defaultBackupStore:
+      backupTarget: "s3://kennedy-homelab-backups@us-east-1/longhorn/"
+      backupTargetCredentialSecret: "longhorn-s3-secret"
+      pollInterval: "500"
+
     ingress:
       enabled: true
       ingressClassName: traefik
