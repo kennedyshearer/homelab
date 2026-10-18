@@ -51,6 +51,9 @@ spec:
       enabled: true
       size: 20Gi
       storageClass: longhorn
+      labels:
+        recurring-job-group.longhorn.io/backup: enabled
+
     service:
       http:
         type: ClusterIP
