@@ -6,3 +6,5 @@ resources:
   - helmrelease.yaml
   - middleware.yaml
   - longhorn-auth-secret.yaml
+  - longhorn-s3-secret.yaml
+  - daily-backup.yaml
