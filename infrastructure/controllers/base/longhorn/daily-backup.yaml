@@ -8,5 +8,5 @@ spec:
   task: backup
   groups:
     - backup
-  retain: 7
+  retain: 14
   concurrency: 2
