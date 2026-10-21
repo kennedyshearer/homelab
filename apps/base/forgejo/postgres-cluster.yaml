@@ -5,10 +5,7 @@ metadata:
   namespace: forgejo
 spec:
   instances: 2
-
-  storage:
-    storageClass: longhorn
-    size: 5Gi
+  imagePullPolicy: Always
 
   bootstrap:
     initdb:
@@ -16,3 +13,13 @@ spec:
       owner: forgejo
       secret:
         name: forgejo-postgres-creds
+
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: s3-store-db
+
+  storage:
+    storageClass: longhorn
+    size: 5Gi
