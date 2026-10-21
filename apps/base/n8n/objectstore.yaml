@@ -1,0 +1,23 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: s3-store-db
+spec:
+  retentionPolicy: '30d'
+  configuration:
+    destinationPath: s3://kennedy-homelab-backups/cnpg/
+    endpointURL: http://object-store:9000
+    s3Credentials:
+      accessKeyId:
+        name: cnpg-s3-secret
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: cnpg-s3-secret
+        key: ACCESS_SECRET_KEY
+      region:
+        name: cnpg-s3-secret
+        key: REGION
+    wal:
+      compression: gzip
+    data:
+      compression: gzip
