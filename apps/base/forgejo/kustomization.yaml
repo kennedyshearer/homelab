@@ -7,3 +7,6 @@ resources:
   - postgres-cluster.yaml
   - ocirepository.yaml
   - helmrelease.yaml
+  - objectstore.yaml
+  - scheduled-backup.yaml
+  - cnpg-s3-secret.yaml
