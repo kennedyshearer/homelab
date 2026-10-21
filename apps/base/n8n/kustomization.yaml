@@ -8,3 +8,6 @@ resources:
   - configmap.yaml
   - postgres-cluster.yaml
   - postgres-secret.yaml
+  - objectstore.yaml
+  - scheduled-backup.yaml
+  - cnpg-s3-secret.yaml
