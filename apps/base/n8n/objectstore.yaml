@@ -10,10 +10,10 @@ spec:
     s3Credentials:
       accessKeyId:
         name: cnpg-s3-secret
-        key: ACCESS_KEY_ID
+        key: AWS_ACCESS_KEY_ID
       secretAccessKey:
         name: cnpg-s3-secret
-        key: ACCESS_SECRET_KEY
+        key: AWS_SECRET_ACCESS_KEY
       region:
         name: cnpg-s3-secret
         key: REGION
