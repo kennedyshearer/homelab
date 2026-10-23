@@ -6,7 +6,6 @@ spec:
   retentionPolicy: '30d'
   configuration:
     destinationPath: s3://kennedy-homelab-backups/cnpg/
-    endpointURL: http://object-store:9000
     s3Credentials:
       accessKeyId:
         name: cnpg-s3-secret
