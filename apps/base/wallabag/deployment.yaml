@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallabag
+  namespace: wallabag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallabag
+  template:
+    metadata:
+      labels:
+        app: wallabag
+    spec:
+      restartPolicy: Always
+
+      containers:
+      - image: wallabag/wallabag:2.6.14
+        name: wallabag
+
+        securityContext:
+            allowPrivilegeEscalation: false
+
+        env:
+        - name: SYMFONY__ENV__DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              name: wallabag-postgres-creds
+              key: username
+        - name: SYMFONY__ENV__DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wallabag-postgres-creds
+              key: password
+        envFrom:
+        - configMapRef:
+            name: wallabag-configmap
+
+        ports:
+        - containerPort: 80
+          name: http
+
+        volumneMounts:
+        - mountPath: /var/www/wallabag/web/assets/images
+          name: wallabag-data
+
+      volumes:
+      - name: wallabag-data
+        persistentVolumeClaim:
+          claimName: wallabag-data
