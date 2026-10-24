@@ -1,0 +1,25 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: wallabag-postgres-cluster
+  namespace: wallabag
+spec:
+  instances: 2
+  imagePullPolicy: Always
+
+  bootstrap:
+    initdb:
+      database: wallabag
+      owner: wallabag
+      secret:
+        name: wallabag-postgres-creds
+
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: s3-store-db
+
+  storage:
+    storageClass: longhorn
+    size: 2Gi
