@@ -15,6 +15,10 @@ spec:
     spec:
       restartPolicy: Always
 
+      securityContext:
+        fsGroup: 65534
+        fcGroupChangePolicy: OnRootMismatch
+
       containers:
       - image: wallabag/wallabag:2.6.14
         name: wallabag
@@ -40,8 +44,20 @@ spec:
         ports:
         - containerPort: 80
           name: http
+        
+        startupProbe:
+          httpGet:
+            path: /
+            port: http
+          periodSeconds: 10
+          failureThreshold: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          periodSeconds: 15
 
-        volumneMounts:
+        volumeMounts:
         - mountPath: /var/www/wallabag/web/assets/images
           name: wallabag-data
 
