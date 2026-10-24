@@ -7,3 +7,4 @@ resources:
   - forgejo
   - pgadmin
   - n8n
+  - wallabag
