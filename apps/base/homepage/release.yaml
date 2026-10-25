@@ -91,6 +91,9 @@ spec:
            - YouTube:
                icon: youtube.png
                href: https://youtube.com/
+           - Wallabag:
+               icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallabag-dark.png
+               href: https://wallabag.kennedyhomelab.net
            - Audiobookshelf:
                icon: audiobookshelf.png
                href: https://abs.kennedyhomelab.net
