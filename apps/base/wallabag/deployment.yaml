@@ -22,6 +22,45 @@ spec:
         fsGroup: 65534
         fsGroupChangePolicy: OnRootMismatch
 
+      initContainers:
+      - name: wallabag-db-init
+        image: wallabag/wallabag:2.6.14
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          set -e
+          cd /var/www/wallabag
+          envsubst < /etc/wallabag/parameters.template.yml > app/config/parameters.yml
+          envsubst < /etc/wallabag/php-wallabag.template.ini > /etc/php81/conf.d/50_wallabag.ini
+          until nc -z "$SYMFONY__ENV__DATABASE_HOST" "$SYMFONY__ENV__DATABASE_PORT"; do sleep 2; done
+          export PGPASSWORD="$SYMFONY__ENV__DATABASE_PASSWORD"
+          HAS_SCHEMA="$(psql -qAt -h "$SYMFONY__ENV__DATABASE_HOST" -p "$SYMFONY__ENV__DATABASE_PORT" \
+            -U "$SYMFONY__ENV__DATABASE_USER" -d "$SYMFONY__ENV__DATABASE_NAME" \
+            -c "SELECT to_regclass('public.wallabag_user')")"
+          if [ -z "$HAS_SCHEMA" ]; then
+            echo "No schema found, running wallabag:install"
+            su -c "php bin/console wallabag:install --env=prod -n" -s /bin/sh nobody
+          else
+            echo "Schema present, running migrations"
+            su -c "php bin/console doctrine:migrations:migrate --env=prod --no-interaction" -s /bin/sh nobody
+          fi
+        
+        env:
+        - name: SYMFONY__ENV__DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              name: wallabag-postgres-creds
+              key: username
+        - name: SYMFONY__ENV__DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wallabag-postgres-creds
+              key: password
+        envFrom:
+        - configMapRef:
+            name: wallabag-configmap
+
+
       containers:
       - image: wallabag/wallabag:2.6.14
         name: wallabag
