@@ -31,7 +31,7 @@ spec:
           set -e
           cd /var/www/wallabag
           envsubst < /etc/wallabag/parameters.template.yml > app/config/parameters.yml
-          envsubst < /etc/wallabag/php-wallabag.template.ini > /etc/php81/conf.d/50_wallabag.ini
+          envsubst < /etc/wallabag/php-wallabag.template.ini > /etc/php82/conf.d/50_wallabag.ini
           until nc -z "$SYMFONY__ENV__DATABASE_HOST" "$SYMFONY__ENV__DATABASE_PORT"; do sleep 2; done
           export PGPASSWORD="$SYMFONY__ENV__DATABASE_PASSWORD"
           HAS_SCHEMA="$(psql -qAt -h "$SYMFONY__ENV__DATABASE_HOST" -p "$SYMFONY__ENV__DATABASE_PORT" \
