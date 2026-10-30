@@ -6,7 +6,7 @@ resources:
   - storage.yaml
   - service.yaml
   - configmap.yaml
-  - postgres-cluster.yaml
+  - n8n-restore-test.yaml
   - postgres-secret.yaml
   - objectstore.yaml
   - scheduled-backup.yaml
