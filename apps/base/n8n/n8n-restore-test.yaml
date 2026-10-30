@@ -1,0 +1,26 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: n8n-postgres-restore
+  namespace: n8n
+spec:
+  instances: 1
+  imagePullPolicy: Always
+
+  bootstrap:
+    recovery:
+      source: origin
+      recoveryTarget:
+        backupID: "20261029T080000"
+
+  externalClusters:
+    - name: origin
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: s3-store-db
+          serverName: n8n-postgres-cluster
+
+  storage:
+    storageClass: longhorn
+    size: 5Gi
