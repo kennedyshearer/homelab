@@ -1,10 +1,10 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: db-daily-backup-restore
+  name: db-daily-backup
 spec:
   cluster:
-    name: forgejo-cluster-restore
+    name: forgejo-postgres-cluster
   schedule: '0 0 8 * * *'
   backupOwnerReference: self
   method: plugin
