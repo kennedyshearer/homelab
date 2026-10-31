@@ -4,7 +4,7 @@ metadata:
   name: db-daily-backup-restore
 spec:
   cluster:
-    name: forgejo-restore-test
+    name: forgejo-cluster-restore
   schedule: '0 0 8 * * *'
   backupOwnerReference: self
   method: plugin
