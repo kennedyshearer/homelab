@@ -1,37 +1,24 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  # name: forgejo-postgres-cluster
-  name: forgejo-cluster-restore
+  name: forgejo-postgres-cluster
   namespace: forgejo
 spec:
-  instances: 1
+  instances: 2
   imagePullPolicy: Always
 
   bootstrap:
-    recovery:
-      source: origin
+    initdb:
       database: forgejo
       owner: forgejo
       secret:
         name: forgejo-postgres-creds
-      recoveryTarget:
-        backupID: "20261029T080000"
-
-  externalClusters:
-    - name: origin
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: s3-store-db
-          serverName: forgejo-postgres-cluster
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
       parameters:
         barmanObjectName: s3-store-db
-        serverName: forgejo-postgres-cluster-v2
 
   storage:
     storageClass: longhorn
