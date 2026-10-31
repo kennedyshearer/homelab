@@ -33,7 +33,7 @@ spec:
       config:
         database:
           DB_TYPE: postgres
-          HOST: forgejo-restore-test-rw:5432
+          HOST: forgejo-cluster-restore-rw:5432
           NAME: forgejo
           USER: forgejo
         server:
@@ -49,6 +49,8 @@ spec:
 
     persistence:
       enabled: true
+      create: false
+      claimName: forgejo-data
       size: 20Gi
       storageClass: longhorn
       labels:
