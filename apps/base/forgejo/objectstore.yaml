@@ -2,10 +2,11 @@ apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
   name: s3-store-db
+  namespace: forgejo
 spec:
   retentionPolicy: '30d'
   configuration:
-    destinationPath: s3://kennedy-homelab-backups/cnpg/
+    destinationPath: s3://kennedy-homelab-backups/cnpg/forgejo-restored/
     s3Credentials:
       accessKeyId:
         name: cnpg-s3-secret
