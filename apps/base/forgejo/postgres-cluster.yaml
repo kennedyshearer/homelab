@@ -3,9 +3,12 @@ kind: Cluster
 metadata:
   name: forgejo-postgres-cluster
   namespace: forgejo
+
 spec:
-  instances: 2
-  imagePullPolicy: Always
+  instances: 1
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.6-system-trixie
+  imagePullPolicy: IfNotPresent
 
   bootstrap:
     initdb:
@@ -23,3 +26,4 @@ spec:
   storage:
     storageClass: longhorn
     size: 5Gi
+
