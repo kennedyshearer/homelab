@@ -19,9 +19,9 @@ spec:
       podMonitorAdditionalLabels:
         release: kube-prometheus-stack
     
-    grafanaDashboard:
-      create: true
-      namespace: monitoring
-      configMapName: cnpg-grafana-dashboard
-      labels:
-        grafana_dashboard: "1"
+      grafanaDashboard:
+        create: true
+        namespace: monitoring
+        configMapName: cnpg-grafana-dashboard
+        labels:
+          grafana_dashboard: "1"
