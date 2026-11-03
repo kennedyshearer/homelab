@@ -12,3 +12,16 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cnpg-charts
+  
+  values:
+    monitoring:
+      podMonitorEnabled: true
+      podMonitorAdditionalLabels:
+        release: kube-prometheus-stack
+    
+    grafanaDashboard:
+      create: true
+      namespace: monitoring
+      configMapName: cnpg-grafana-dashboard
+      labels:
+        grafana_dashboard: "1"
