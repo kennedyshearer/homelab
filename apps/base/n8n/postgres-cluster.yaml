@@ -3,23 +3,34 @@ kind: Cluster
 metadata:
   name: n8n-postgres-cluster
   namespace: n8n
+
 spec:
-  instances: 2
+  instances: 1
   imagePullPolicy: Always
 
   bootstrap:
-    initdb:
-      database: n8n
-      owner: n8n
-      secret:
-        name: n8n-postgres-creds
+    recovery:
+      source: origin
+      recoveryTarget:
+        backupID: "20261105T195419"
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
+      enabled: true
       isWALArchiver: true
       parameters:
         barmanObjectName: s3-store-db
+        serverName: n8n-postgres-cluster-migrated
+
+  externalClusters:
+    - name: origin
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: s3-store-db
+          serverName: n8n-postgres-restore
 
   storage:
-    storageClass: longhorn
+    storageClass: longhorn-postgres
     size: 5Gi
+
