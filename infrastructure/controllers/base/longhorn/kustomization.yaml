@@ -8,3 +8,4 @@ resources:
   - longhorn-auth-secret.yaml
   - longhorn-s3-secret.yaml
   - daily-backup.yaml
+  - storageclass-postgres.yaml
