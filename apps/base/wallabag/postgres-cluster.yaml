@@ -4,7 +4,7 @@ metadata:
   name: wallabag-postgres-cluster
   namespace: wallabag
 spec:
-  instances: 2
+  instances: 1
   imagePullPolicy: Always
 
   bootstrap:
@@ -21,5 +21,5 @@ spec:
         barmanObjectName: s3-store-db
 
   storage:
-    storageClass: longhorn
+    storageClass: longhorn-postgres
     size: 2Gi
