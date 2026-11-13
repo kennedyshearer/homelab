@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: n8n
+    homelab.kennedyhomelab.net/ups-shutdown: "true"
   name: n8n
 spec:
   replicas: 1
