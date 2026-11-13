@@ -8,3 +8,16 @@ resources:
   - pgadmin
   - n8n
   - wallabag
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: unused
+        labels:
+          homelab.kennedyhomelab.net/ups-shutdown: "true"
