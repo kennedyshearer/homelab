@@ -24,7 +24,7 @@ spec:
 
       initContainers:
       - name: wallabag-db-init
-        image: wallabag/wallabag:2.6.15
+        image: wallabag/wallabag:2.6.16
         command: ["/bin/sh", "-c"]
         args:
         - |
@@ -62,7 +62,7 @@ spec:
 
 
       containers:
-      - image: wallabag/wallabag:2.6.15
+      - image: wallabag/wallabag:2.6.16
         name: wallabag
 
         securityContext:
