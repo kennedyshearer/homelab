@@ -3,3 +3,17 @@ kind: Kustomization
 namespace: longhorn-system
 resources:
   - ../../base/longhorn
+
+
+patches:
+  - target:
+      group: helm.toolkit.fluxcd.io
+      version: v2
+      kind: HelmRelease
+    patch: |-
+      apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      metadata:
+        name: unused
+        labels:
+          homelab.kennedyhomelab.net/ups-helm-policy: "preserve"
